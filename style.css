@@ -3,9 +3,26 @@ html, body {
   width: 100%;
 }
 
+body {
+  background-image: linear-gradient(to bottom, #1A4A1C, #308834 600px);
+  margin-left: 30px;
+}
+
+.deck-info {
+  position: relative;
+}
+
+.cards {
+  list-style: none;
+}
+
+.card {
+  display: inline-block;
+}
+
 .gridStyle {
     border: 1px solid rgb(212,212,212);
-    width: 100%; 
+    width: 100%;
     height: 1200px;
     min-height: 100%;
 }

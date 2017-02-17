@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html ng-app="itunes">
+<html ng-app="blackjack">
   <head>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
@@ -7,30 +7,47 @@
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body ng-controller="mainCtrl">
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <!-- <div class="navbar navbar-default" role="navigation">
       <div class="container">
         <div id="myContainer">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-music"></span> DevTunes</a>
+            <a class="navbar-brand" href="#">Blackjack</a>
           </div>
-          <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control" ng-model="artist" placeholder="Artist Name" >
-              <button class="btn btn-primary" ng-click="getSongData()"> Submit </button>
-            </div>
-          </form>
         </div>
       </div>
+    </div> -->
+
+    <h1>Blackjack!</h1>
+
+    <div class="deck-info">
+      <button ng-click="getDeck()">Start Game</button>
+      <h3>Remaining cards in deck: {{ deck.remaining }}</h3>
+      <ul class="cards">
+        <li class="card" ng-repeat="card in deck.cards">
+          <img ng-src="{{ card.image }}" alt="">
+        </li>
+      </ul>
+      <button ng-click="draw()">Draw</button>
+      <h3>Total Points: {{ deck.points <= 21 ? deck.points : "You lose! - " + deck.points }}</h3>
     </div>
-    <div class="panel panel-default">
-      <div class="panel-heading"> Your Search Results:</div>
-     <div class="gridStyle" ng-grid="gridOptions" swap-image="defaultInfo.search"></div>
-    </div>
+
+    <!-- <div class="deck-info">
+      <button ng-click="getDeck2()">Start Game</button>
+      <h3>Remaining cards in deck: {{ deck.remaining }}</h3>
+      <ul class="cards">
+        <li class="card" ng-repeat="card in deck.cards">
+          <img ng-src="{{ card.image }}" alt="">
+        </li>
+      </ul>
+      <button ng-click="draw2()">Draw</button>
+      <h3>Total Points: {{ deck.points }}</h3>
+    </div> -->
+
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.11/ng-grid.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/mainCtrl.js"></script>
-    <script src="js/itunesService.js"></script>
+    <script src="js/blackjackService.js"></script>
   </body>
 </html>
