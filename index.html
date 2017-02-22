@@ -24,7 +24,7 @@
       <h3>Remaining cards in deck: {{ deck.remaining }}</h3>
       <ul class="cards">
         <li class="card" ng-repeat="card in deck.cards">
-          <img ng-src="{{ card.image }}" alt="">
+          <img ng-src="{{ card.image }}" alt="{{ card.value }} of {{ card.suit}}">
         </li>
       </ul>
       <button ng-click="draw()">Draw</button>
