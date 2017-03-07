@@ -45,7 +45,7 @@ angular.module('blackjack').controller('mainCtrl', function($scope, $http, black
   }
 
   //CREATE A VALUE FOR EACH CARD IN A HAND ON THE CARDS ARRAY
-  //AND RE-QUERY THE TOTAL SCORE EACH TIME A NEW CARD IS DRAWN
+  //AND RE-QUERY THE TOTAL SCORE       EACH TIME A NEW CARD IS DRAWN
 
   $scope.cardValue = function(cards) {
     // console.log(parseInt(cards.value));
