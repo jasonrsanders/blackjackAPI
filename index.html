@@ -4,44 +4,31 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.11/ng-grid.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cantata+One|Prata">
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
+
   <body ng-controller="mainCtrl">
-    <!-- <div class="navbar navbar-default" role="navigation">
-      <div class="container">
-        <div id="myContainer">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">Blackjack</a>
-          </div>
-        </div>
+
+    <header class="title">
+      <img class="card-image" src="images/2-card-21.png" alt="blackjack" />
+      <h1>Blackjack</h1>
+      <img class="card-image" src="images/2-card-21.png" alt="blackjack" />
+    </header>
+
+    <div class="container">
+      <div class="deck-info">
+        <ul class="cards">
+          <li class="card" ng-repeat="card in deck.cards">
+            <img ng-src="{{ card.image }}" alt="{{ card.value }} of {{ card.suit }}">
+          </li>
+        </ul>
+        <button ng-click="getDeck()">New Game</button>
+        <button ng-click="draw()">Draw a card</button>
+        <h3>Total Points: {{ deck.points <= 20 ? deck.points : deck.points <= 21 ? "You win! - " + deck.points : !deck.points ? "0 - Start a new game" : "You lose! - " + deck.points }}</h3>
+        <h5>Remaining cards in deck: {{ deck.remaining }}</h5>
       </div>
-    </div> -->
-
-    <h1>Blackjack!</h1>
-
-    <div class="deck-info">
-      <button ng-click="getDeck()">Start Game</button>
-      <h3>Remaining cards in deck: {{ deck.remaining }}</h3>
-      <ul class="cards">
-        <li class="card" ng-repeat="card in deck.cards">
-          <img ng-src="{{ card.image }}" alt="{{ card.value }} of {{ card.suit }}">
-        </li>
-      </ul>
-      <button ng-click="draw()">Draw</button>
-      <h3>Total Points: {{ deck.points <= 21 ? deck.points : "You lose! - " + deck.points }}</h3>
     </div>
-
-    <!-- <div class="deck-info">
-      <button ng-click="getDeck2()">Start Game</button>
-      <h3>Remaining cards in deck: {{ deck.remaining }}</h3>
-      <ul class="cards">
-        <li class="card" ng-repeat="card in deck.cards">
-          <img ng-src="{{ card.image }}" alt="">
-        </li>
-      </ul>
-      <button ng-click="draw2()">Draw</button>
-      <h3>Total Points: {{ deck.points }}</h3>
-    </div> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
