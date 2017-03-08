@@ -62,9 +62,9 @@ angular.module('blackjack').controller('mainCtrl', function($scope, $http, black
     for(var i = 0; i < cards.length - 1; i++) {
       if(cards[i].value === 'ACE') {
         if($scope.deck.points > 21) {
-          if(!$scope.deck.ace) {
+          if(!cards[i].ace) {
             $scope.deck.points -= 10;
-            $scope.deck.ace = true
+            cards[i].ace = true;
           }
         }
       }

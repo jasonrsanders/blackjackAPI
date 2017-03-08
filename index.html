@@ -25,7 +25,7 @@
         </ul>
         <button ng-click="getDeck()">New Game</button>
         <button ng-click="draw()">Draw a card</button>
-        <h3>Total Points: {{ deck.points <= 20 ? deck.points : deck.points <= 21 ? "You win! - " + deck.points : !deck.points ? "0 - Start a new game" : "You lose! - " + deck.points }}</h3>
+        <h3>Total Points: {{ deck.points <= 20 ? deck.points : deck.points <= 21 ? "You win! | " + deck.points : !deck.points ? "0 | Start a new game" : "You lose! | " + deck.points }}</h3>
         <h5>Remaining cards in deck: {{ deck.remaining }}</h5>
       </div>
     </div>
