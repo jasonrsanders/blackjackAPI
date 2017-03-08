@@ -6,7 +6,7 @@ angular.module('blackjack').controller('mainCtrl', function($scope, $http, black
       $scope.deck = response.data;
       var value = 0;
       $scope.deck.points = 0;
-      // console.log($scope.deck);
+      console.log($scope.deck);
       $scope.cardsValue($scope.deck.cards);
       $scope.cards = $scope.deck.cards;
       return $scope.deck;
@@ -19,60 +19,56 @@ angular.module('blackjack').controller('mainCtrl', function($scope, $http, black
       // console.log(response.data.cards[0]);
       $scope.deck.cards.push(response.data.cards[0]);
       $scope.deck.remaining--;
-      $scope.cardValue($scope.deck.cards[$scope.deck.cards.length - 1])
+      $scope.cardValue($scope.deck.cards);
       return $scope.deck;
     });
   };
 
   $scope.cardsValue = function(cards) {
+    $scope.deck.points = 0;
     for(var i = 0; i < cards.length; i++) {
-      // console.log(parseInt(cards[i].value));
+      console.log(cards[i].value);
       if(cards[i].value === 'ACE') {
-        if($scope.deck.points <= 10) {
-          value = 11;
-        } else {
-          value = 1;
-        }
+        cards[i].cardvalue = 11;
       } else if(cards[i].value === 'KING' || cards[i].value === 'QUEEN' || cards[i].value === 'JACK') {
-        value = 10;
+        cards[i].cardvalue = 10;
       } else {
-        value = parseInt(cards[i].value);
+        cards[i].cardvalue = parseInt(cards[i].value);
       }
-      // console.log(value);
-      $scope.deck.points += value
-      // console.log($scope.deck.points);
+      console.log(cards[i].cardvalue);
+      $scope.deck.points += cards[i].cardvalue
+      console.log($scope.deck.points);
     }
   }
 
   //CREATE A VALUE FOR EACH CARD IN A HAND ON THE CARDS ARRAY
-  //AND RE-QUERY THE TOTAL SCORE       EACH TIME A NEW CARD IS DRAWN
+  //AND RE-QUERY THE TOTAL SCORE EACH TIME A NEW CARD IS DRAWN
 
   $scope.cardValue = function(cards) {
-    // console.log(parseInt(cards.value));
-    if(cards.value === 'ACE') {
-      if($scope.deck.points <= 10) {
-        value = 11;
+    for(var i = cards.length - 1; i < cards.length; i++) {
+      if(cards[i].value === 'ACE') {
+        if($scope.deck.points <= 10) {
+          cards[i].cardvalue = 11;
+        } else {
+          cards[i].cardvalue = 1;
+        }
+      } else if(cards[i].value === 'KING' || cards[i].value === 'QUEEN' || cards[i].value === 'JACK') {
+        cards[i].cardvalue = 10;
       } else {
-        value = 1;
+        cards[i].cardvalue = parseInt(cards[i].value);
       }
-    } else if(cards.value === 'KING' || cards.value === 'QUEEN' || cards.value === 'JACK') {
-      value = 10;
-    } else {
-      value = parseInt(cards.value);
+      $scope.deck.points += cards[i].cardvalue
     }
-    // console.log(value);
-    $scope.deck.points += value
-
-    // for(var i = 0; i < cards.length - 1; i++) {
-    //   if(cards[i].value === 'ACE') {
-    //     if($scope.deck.points > 21) {
-    //       $scope.deck.points -= 10;
-    //     } else {
-    //       value = 11;
-    //     }
-    //   }
-    // }
-    // console.log($scope.deck.points);
+    for(var i = 0; i < cards.length - 1; i++) {
+      if(cards[i].value === 'ACE') {
+        if($scope.deck.points > 21) {
+          if(!$scope.deck.ace) {
+            $scope.deck.points -= 10;
+            $scope.deck.ace = true
+          }
+        }
+      }
+    }
   }
 
 });
