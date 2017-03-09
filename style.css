@@ -24,6 +24,11 @@ body {
   color: #14151B;
 }
 
+.my-site {
+  margin: 0 auto;
+  text-align: center;
+}
+
 h1 {
   /*margin: 0 auto;*/
   padding: 15px;
